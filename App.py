@@ -1,0 +1,34 @@
+import streamlit as st
+import joblib
+import pandas as pd
+
+
+model = joblib.load('titanic_model.pkl')
+
+
+st.title("Titanic Survival Predictor 🚢")
+st.write("Enter passenger details to see if they would have survived.")
+
+
+pclass = st.selectbox("Ticket Class", [1, 2, 3])
+sex = st.selectbox("Sex", ["male", "female"])
+age = st.slider("Age", 0, 100, 25)
+sibsp = st.number_input("Siblings/Spouses Aboard", 0, 10, 0)
+parch = st.number_input("Parents/Children Aboard", 0, 10, 0)
+fare = st.number_input("Fare Paid", 0.0, 500.0, 32.0)
+
+
+sex_val = 0 if sex == "male" else 1
+
+
+if st.button("Predict Survival"):
+    input_data = pd.DataFrame([[pclass, sex_val, age, sibsp, parch, fare]], 
+                              columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare'])
+    
+    prediction = model.predict(input_data)
+    
+    if prediction[0] == 1:
+        st.success("Result: This passenger would have SURVIVED! 🎉")
+    else:
+        st.error("Result: This passenger would NOT have survived. 😔")
+
