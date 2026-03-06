@@ -22,8 +22,8 @@ sex_val = 0 if sex == "male" else 1
 
 
 if st.button("Predict Survival"):
-input_data = pd.DataFrame([[pclass, sex_val, age, sibsp, parch, fare]],
-columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare'])
+    input_data = pd.DataFrame([[pclass, sex_val, age, sibsp, parch, fare]],
+    columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare'])
 
 
 prediction = model.predict(input_data)
