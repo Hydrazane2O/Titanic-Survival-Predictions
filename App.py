@@ -19,17 +19,22 @@ fare = st.number_input("Fare Paid", 0.0, 500.0, 32.0)
 
 sex_val = 0 if sex == "male" else 1
 
+input_data = None
 
 if st.button("Predict Survival"):
     input_data = pd.DataFrame([[pclass, sex_val, age, sibsp, parch, fare]],
     columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare'])
+    try:
+        prediction = model.predict(input_data)
 
-
-prediction = model.predict(input_data)
+    except Exception as e:
+        st.error(f"Prediction error: {e}")
 
 if prediction[0] == 1:
     st.success("Result: This passenger would have SURVIVED! 🎉")
 else:
     st.error("Result: This passenger would NOT have survived. 😔")
+
+
 
 
