@@ -24,3 +24,14 @@ Thumbs.db
 
 # Streamlit specific
 .streamlit/secrets.toml
+
+# DO NOT IGNORE:
+*.pkl
+*.joblib
+*.csv
+
+# Python
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints

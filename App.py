@@ -31,3 +31,5 @@ if prediction[0] == 1:
     st.success("Result: This passenger would have SURVIVED! 🎉")
 else:
     st.error("Result: This passenger would NOT have survived. 😔")
+
+
