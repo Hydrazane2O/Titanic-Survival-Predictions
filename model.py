@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 import pickle
+import os
 
 # Load data
 df = pd.read_csv('C:/Users/Hydra/Downloads/group 3/Titanic-Dataset.csv')
@@ -28,4 +29,11 @@ model.fit(X, y)
 with open('titanic_model.pkl', 'wb') as f:
     pickle.dump(model, f, protocol=5)
 
-print("✅ Model saved successfully!")
+# Verify file size
+file_size = os.path.getsize('titanic_model.pkl')
+print(f"✅ Model saved! File size: {file_size} bytes")
+
+if file_size < 10000:
+    print("❌ File is too small! Check your code.")
+else:
+    print("✅ File size is correct!")
