@@ -27,13 +27,13 @@ if st.button("Predict Survival"):
     try:
         prediction = model.predict(input_data)
 
+        if prediction[0] == 1:
+            st.success("Result: This passenger would have SURVIVED! 🎉")
+        else:
+            st.error("Result: This passenger would NOT have survived. 😔")
     except Exception as e:
         st.error(f"Prediction error: {e}")
 
-if prediction[0] == 1:
-    st.success("Result: This passenger would have SURVIVED! 🎉")
-else:
-    st.error("Result: This passenger would NOT have survived. 😔")
 
 
 
