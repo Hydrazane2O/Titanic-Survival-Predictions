@@ -4,7 +4,6 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 import joblib
-import os
 
 # Load data
 df = pd.read_csv('C:/Users/Hydra/Downloads/group 3/Titanic-Dataset.csv')
@@ -26,12 +25,3 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X, y)
 
 joblib.dump(model, 'titanic_model.joblib')
-
-# Verify file size
-file_size = os.path.getsize('titanic_model.joblib')
-print(f"✅ Model saved! File size: {file_size} bytes")
-
-if file_size < 10000:
-    print("❌ File is too small! Check your code.")
-else:
-    print("✅ File size is correct!")
