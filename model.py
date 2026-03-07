@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
-import pickle
+import joblib
 import os
 
 # Load data
@@ -25,12 +25,10 @@ y = df['Survived']
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X, y)
 
-# Save with pickle (protocol 5 for better compatibility)
-with open('titanic_model.pkl', 'wb') as f:
-    pickle.dump(model, f, protocol=5)
+joblib.dump(model, 'titanic_model.joblib')
 
 # Verify file size
-file_size = os.path.getsize('titanic_model.pkl')
+file_size = os.path.getsize('titanic_model.joblib')
 print(f"✅ Model saved! File size: {file_size} bytes")
 
 if file_size < 10000:
