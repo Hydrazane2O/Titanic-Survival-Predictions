@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-with open('titanic_model.pkl', 'wb') as f:
+with open('titanic_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 
