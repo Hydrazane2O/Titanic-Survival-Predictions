@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
-from joblib import load
+from sklearn.externals import joblib  # Or use sklearn's built-in
 
-model = load('titanic_model.joblib')
+model = joblib.load('titanic_model.joblib')
 
 st.title("Titanic Survival Predictor 🚢")
 st.write("Enter passenger details to see if they would have survived.")
